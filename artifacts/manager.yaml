@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatgpt-controller
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatgpt-controller
+  template:
+    metadata:
+      labels:
+        app: chatgpt-controller
+    spec:
+      serviceAccountName: gpt-manager
+      containers:
+        - name: chatgpt-controller
+          image: uucloud/chatgpt-k8s-contronller:latest
+          imagePullPolicy: Always
+          command: ["./controller"]

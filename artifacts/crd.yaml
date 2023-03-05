@@ -1,0 +1,71 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: chatgpts.chatgptcontroller.uucloud.top
+spec:
+  group: chatgptcontroller.uucloud.top
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        # schema used for validation
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+              properties:
+                service_name:
+                  type: string
+                image:
+                  type: string
+                  default: "uucloud/chatgpt-server:latest"
+                config:
+                  type: object
+                  properties:
+                    token:
+                      type: string
+                    model:
+                      type: string
+                      default: "gpt-3.5-turbo"
+                    temperature:
+                      type: number
+                      format: float
+                      default: 0.7
+                      minimum: 0.1
+                      maximum: 2
+                    max_token:
+                      type: integer
+                      default: 300
+                      maximum: 4000
+                    top_p:
+                      type: number
+                      format: float
+                      default: 1
+                    "n":
+                      type: integer
+                      default: 1
+                    context_limit:
+                      type: integer
+                      default: 2000
+                      maximum: 4000
+                  required:
+                    - token
+              required:
+                - image
+            status:
+              type: object
+              properties:
+                status:
+                  type: string
+      # subresources for the custom resource
+      subresources:
+        # enables the status subresource
+        status: {}
+  names:
+    kind: ChatGPT
+    plural: chatgpts
+    shortNames:
+    - gpt
+  scope: Namespaced
