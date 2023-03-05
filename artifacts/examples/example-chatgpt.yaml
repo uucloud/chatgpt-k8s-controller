@@ -1,0 +1,7 @@
+apiVersion: chatgptcontroller.uucloud.top/v1
+kind: ChatGPT
+metadata:
+  name: example-chatgpt
+spec:
+  config:
+    token: "XXXXXX"
