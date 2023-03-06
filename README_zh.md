@@ -10,7 +10,7 @@ kubernetes >= 1.25可使用，更小的版本没有测试过
 确保拥有kubectl及集群权限:
 
 ```
-git clone https://github.com/your-username/chatgpt-k8s-controller.git
+git clone https://github.com/uucloud/chatgpt-k8s-controller.git
 make deploy
 ```
 

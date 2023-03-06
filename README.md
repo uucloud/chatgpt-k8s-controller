@@ -15,7 +15,7 @@ This project requires Kubernetes version >= 1.25, and lower versions have not be
 Ensure that you have kubectl and cluster permissions:
 
 ```
-git clone https://github.com/your-username/chatgpt-k8s-controller.git
+git clone https://github.com/uucloud/chatgpt-k8s-controller.git
 make deploy
 ```
 

@@ -38,7 +38,7 @@ docker-build:
 
 docker-push:
 	@echo "Pushing Docker image..."
-	docker push $(IMAGE_NAME)
+	docker push $(IMAGE_NAME):latest
 
 deploy:
 	@echo "Deploying to Kubernetes..."
